@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int fact = 1;
+    if(n < 0) {
+        cout << "invalid number";
+    }
+    else {
+        while(n > 0) {
+            fact = fact * n;
+            n--;
+        }
+        cout << fact;
+    }
+    return 0;
+}
