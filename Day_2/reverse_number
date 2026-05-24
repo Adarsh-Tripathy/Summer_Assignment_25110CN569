@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+
+    int temp = n;
+    int a;
+    int rev = 0;
+
+    n = abs(n);
+
+    if(n == 0){
+        cout << 0;
+        return 0;
+    }
+
+    while(n > 0){
+        a = n % 10;
+        rev = rev * 10 + a;
+        n = n / 10;
+    }
+
+    if(temp < 0)
+        cout << -rev;
+    else
+        cout << rev;
+}
