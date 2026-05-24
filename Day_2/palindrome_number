@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+  int n;
+  cin>>n;
+  int a;
+  int rev=0;
+  n=abs(n);
+  int c=n;
+  if(n==0){
+    cout<<"palindrome";
+    return 0;
+  }
+  else{
+    while(n>0){
+      a=n%10;
+      rev=rev*10+a;
+      n=n/10;
+    }
+  }
+  if(c==rev) cout<<"palindrome";
+  else cout<<"not palindrome";
+}
