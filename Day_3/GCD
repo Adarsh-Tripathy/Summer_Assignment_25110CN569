@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+  int a,b;
+  cin>>a;
+  cin>>b;
+  if(a<0 || b<0 ||(a==0 && b==0)){
+    cout<<"invalid number";
+    return 0;
+  }
+  while(a>0 && b>0){
+    if(a>b) a=a-b;
+    else b=b-a;
+  }
+  if(a==0) cout<<b<<" is gcd";
+  else cout<<a<<" is gcd";
+  return 0;
+}
