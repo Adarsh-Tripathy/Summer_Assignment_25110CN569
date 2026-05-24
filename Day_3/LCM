@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int a, b, gcd, lcm;
+    cin >> a >> b;
+    if(a < 0 || b < 0 || (a == 0 && b == 0)){
+        cout << "invalid number";
+        return 0;
+    }
+    int originalA = a;
+    int originalB = b;
+    while(a > 0 && b > 0){
+        if(a > b)
+            a = a - b;
+        else
+            b = b - a;
+    }
+    if(a == 0)
+        gcd = b;
+    else
+        gcd = a;
+    lcm = (originalA * originalB) / gcd;
+    cout << lcm << " is the lcm";
+    return 0;
+}
