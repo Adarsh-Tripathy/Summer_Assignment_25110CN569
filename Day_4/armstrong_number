@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+  int n,b,c=0,d;
+  cin>>n;
+  d=n;
+  if(n<0){
+    cout<<"negative number";
+    return 0;
+  }
+  if(n==0){
+    cout<<"armstrong number";
+    return 0;
+  }
+  else{
+    while(n>0){
+      b=n%10;
+      c+=pow(b,3);
+      n=n/10;
+    }
+  }
+  if(c==d) cout<<"armstrong number";
+  else cout<<"not armstrong";
+}
