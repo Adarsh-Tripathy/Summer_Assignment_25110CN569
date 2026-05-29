@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+int s(int n,int sum){
+  if(n==0){
+    return sum;
+  }
+  int b=n%10;
+  sum=sum*10+b;
+  return s(n/10,sum);
+}
+int main(){
+    int n;
+    cin>>n;
+    cout<<s(n,0);
+}
