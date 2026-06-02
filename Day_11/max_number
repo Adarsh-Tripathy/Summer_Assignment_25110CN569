@@ -1,0 +1,14 @@
+#include<bits/stdc++.h>
+using namespace std;
+void max(int i,int j){
+  if(i>j) cout<<"max number is:"<<i;
+  else if(i==j)cout<<"numbers are equal";
+  else cout<<"max number is:"<<j;
+}
+int main(){
+  int a,b;
+  cin>>a;
+  cin>>b;
+  max(a,b);
+  return 0;
+}
