@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+void prime(int i){
+  if(i==0 || i==1){
+    cout<<"neither prime nor composite number";
+    return;
+  }
+  for(int j=2;j<=i/2;j++){
+    if(i%j==0){
+      cout<<"not prime";
+      return;
+    }
+  }
+  cout<<"prime";
+}
+int main(){
+  int a;
+  cin>>a;
+  prime(a);
+  return 0;
+}
