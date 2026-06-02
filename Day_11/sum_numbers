@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+void sum(){
+  int i,j;
+  cin>>i;
+  cin>>j;
+  cout<<i+j;
+}
+int main(){
+  sum();
+  return 0;
+}
