@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+void palindrome(int n){
+    int rev=0,b,i=n;
+    while(i>0){
+        b=i%10;
+        rev=rev*10+b;
+        i=i/10;
+    }
+    if(rev==n){
+        cout<<"palindrome";
+    }
+    else cout<<"not palindrome";
+}
+int main(){
+    int n;
+    cin>>n;
+    palindrome(n);
+} 
