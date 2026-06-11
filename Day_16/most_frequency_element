@@ -1,0 +1,29 @@
+#include<iostream>
+#include<map>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int a[n];
+    int maximum=0;
+    int num;
+    map<int,int>m;
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+        m[a[i]]++;
+    }
+    for(auto it:m){
+        if(it.second>maximum){
+            maximum=it.second;
+            num=it.first;
+        }
+    }
+    cout<<num;
+}
+
+
+
+
+
+
+
