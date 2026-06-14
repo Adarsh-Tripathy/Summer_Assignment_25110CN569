@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int remove=0;
+    int a[n][n],sum1=0,sum2=0,sum=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cin>>a[i][j];
+        }
+    }
+    int j=n-1;
+    for(int i=0;i<n;i++){
+        if(i==j){
+            remove=a[i][j];
+        }
+        sum1+=a[i][i];
+        sum2+=a[i][j];
+        j--;
+
+    }
+    sum=sum1+sum2-remove;
+    cout<<"main diagonal sum is "<<sum1<<endl;
+    cout<<"secondary diagonal sum is "<<sum2<<endl;
+    cout<<"total diagonal sum is "<<sum<<endl;
+
+}
