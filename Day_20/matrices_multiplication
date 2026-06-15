@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int m,n,a;
+    cin>>m;
+    cin>>n;
+    cin>>a;
+    int m1[m][n],m2[n][a],m3[m][a];
+    for(int i=0;i<m;i++){
+        for(int j=0;j<n;j++){
+            cin>>m1[i][j];
+        }
+    }
+    for(int i=0;i<n;i++){
+        for(int j=0;j<a;j++){
+            cin>>m2[i][j];
+        }
+    }
+    for(int i=0;i<m;i++){
+        for(int j=0;j<a;j++){
+            m3[i][j]=0;
+            for(int k=0;k<n;k++){
+                m3[i][j]+=m1[i][k]*m2[k][j];
+            }
+        }
+    }
+    for(int i=0;i<m;i++){
+        for(int j=0;j<a;j++){
+            cout<<m3[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+}
