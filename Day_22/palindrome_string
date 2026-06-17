@@ -1,15 +1,14 @@
 #include<iostream>
-#include<algorithm>
-#include<cstring>
 using namespace std;
 int main(){
-    char str[100];
+    string str;
     cin>>str;
-    char a[100];
-    strcpy(a,str);
-    reverse(a,a+strlen(str));
-    if(strcmp(a,str)==0){
-        cout<<"palindrome string";
+    string a=str;
+    for(int i=0,j=str.size()-1;i<=j;i++,j--){
+        swap(str[i],str[j]);
     }
-    else cout<<"not palindrome string";
+    if(a==str){
+        cout<<"palindrome string ";
+    }
+    else cout<<"not palindrome ";
 }
