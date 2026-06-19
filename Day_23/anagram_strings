@@ -1,0 +1,18 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main(){
+    string a,b;
+    cin>>a;
+    cin>>b;
+    if(a.size()!=b.size()){
+        cout<<"not anagram strings";
+        return 0;
+    }
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());   
+    if(a==b){
+        cout<<"anagram strings";
+    }
+    else cout<<"not anagram strings";
+}
