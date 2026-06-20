@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+int main(){
+    string s;
+    getline(cin,s);
+    string word="";
+    string longest="";
+    for(auto it:s){
+        if(it!=' '){
+            word+=it;
+        }
+        else{
+            if(word.size()>longest.size()){
+                longest=word;
+            }
+            word="";
+        }
+    }
+    if(word.size()>longest.size()){
+        longest=word;
+    }
+    cout<<longest;
+}
