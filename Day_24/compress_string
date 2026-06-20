@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+int main(){
+    string a;
+    cin>>a;
+    char last=a[0];
+    int count=1;
+    for(int i=1;i<a.size();i++){
+        if(last==a[i]){
+            count+=1;
+            last=a[i];
+        }
+        else{
+            cout<<last<<count;
+            count=1;
+            last=a[i];
+        }
+    }
+    cout<<last<<count;
+}
