@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main(){
+    string a,b;
+    string c="";
+    getline(cin,a);
+    getline(cin,b);
+    for(auto it:a){
+        if(b.find(it)!=string::npos && c.find(it)==string::npos){
+            c+=it;
+        }
+    }
+    if(c==""){
+        cout<<"no common characters";
+    }
+    else cout<<c;
+}
