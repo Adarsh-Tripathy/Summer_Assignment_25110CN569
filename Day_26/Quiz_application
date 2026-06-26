@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int score = 0;
+    int answer;
+    cout<<"=== QUIZ APPLICATION ===\n";
+    cout<<"1.What is the capital of India?\n";
+    cout<<"1.Mumbai\n2.Delhi\n3.Kolkata\n4.Chennai\n";
+    cin>>answer;
+    if(answer==2) {
+        score++;
+    }
+    cout<<"2.Which planet is known as Red Planet?\n";
+    cout<<"1.Venus\n2.Mars\n3.Jupiter\n4.Saturn\n";
+    cin>>answer;
+    if(answer==2) {
+        score++;
+    }
+    cout<<"3.How many continents are there on Earth?\n";
+    cout<<"1.5\n2.6\n3.7\n4.8\n";
+    cin>>answer;
+    if(answer==3) {
+        score++;
+    }
+    cout<<"4.Which is the largest ocean on Earth?\n";
+    cout<<"1.Atlantic Ocean\n2.Indian Ocean\n3.Arctic Ocean\n4.pacific Ocean\n";
+    cin>>answer;
+    if(answer==4) {
+        score++;
+    }
+    cout<<"\nQuiz Finished!\n";
+    cout<<"Your Score: "<<score<<"/4\n";
+    return 0;
+}
