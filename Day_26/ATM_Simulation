@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int balance=10000;
+    while(true){
+        cout<<"||ATM SIMULATION||\n1.Withdrawal\n2.Deposit\n3.Check Balance\n4.Exit\nEnter your choice:";
+        int n;
+        cin>>n;
+        if(n==1){
+            cout<<"how much money you want to withdraw\n";
+            int a;
+            cin>>a;
+            if(a<=balance){
+                cout<<"withdrawn successfully\n";
+                balance-=a;
+                cout<<"new balance is:"<<balance<<"\n";
+            }
+            else cout<<"insufficient balance\n";
+        }
+        else if(n==2){
+            int a;
+            cin>>a;
+            cout<<"deposit successfull\n";
+            balance+=a;
+            cout<<"new balance is:"<<balance<<"\n";
+        }
+        else if(n==3){
+            cout<<"current balance is:"<<balance<<"\n";
+        }
+        else if(n==4){
+            cout<<"Exited \n";
+            break;
+        }
+        else cout<<"choice is incorrect\n";
+    }
+}
