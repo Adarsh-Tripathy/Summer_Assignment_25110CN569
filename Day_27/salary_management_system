@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int id[50];
+    string name[50];
+    float basic[50];
+    float allowance[50];
+    float deduction[50];
+    float netSalary[50];
+    int count=0;
+    int choice;
+    cout<<"SALARY MANAGEMENT SYSTEM"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Add Employee Salary"<<endl;
+        cout<<"2. Show All"<<endl;
+        cout<<"3. Search by ID"<<endl;
+        cout<<"4. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            cout<<"Enter ID: ";
+            cin>>id[count];
+            cout<<"Enter Name: ";
+            cin>>name[count];
+            cout<<"Enter Basic Salary: ";
+            cin>>basic[count];
+            cout<<"Enter Allowance: ";
+            cin>>allowance[count];
+            cout<<"Enter Deduction: ";
+            cin>>deduction[count];
+            // net salary = basic + allowance - deduction
+            netSalary[count] = basic[count] + allowance[count] - deduction[count];
+            count=count+1;
+            cout<<"Salary record added"<<endl;
+        }
+        if(choice==2){
+            if(count==0){
+                cout<<"No records yet"<<endl;
+            }
+            else{
+                cout<<"ID  Name  Basic  Allowance  Deduction  NetSalary"<<endl;
+                for(int i=0;i<count;i++){
+                    cout<<id[i]<<"  "<<name[i]<<"  "<<basic[i]<<"  "<<allowance[i]<<"  "<<deduction[i]<<"  "<<netSalary[i]<<endl;
+                }
+            }
+        }
+        if(choice==3){
+            int sid;
+            cout<<"Enter ID to search: ";
+            cin>>sid;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(id[i]==sid){
+                    cout<<"Name: "<<name[i]<<endl;
+                    cout<<"Basic: "<<basic[i]<<endl;
+                    cout<<"Allowance: "<<allowance[i]<<endl;
+                    cout<<"Deduction: "<<deduction[i]<<endl;
+                    cout<<"Net Salary: "<<netSalary[i]<<endl;
+                    found=1;
+                }
+            }
+            if(found==0){
+                cout<<"ID not found"<<endl;
+            }
+        }
+        if(choice==4){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+    }
+    return 0;
+}
