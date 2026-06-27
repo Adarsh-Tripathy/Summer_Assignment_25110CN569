@@ -1,18 +1,14 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-
 struct Student{
     int roll;
     string name;
     float marks;
 };
-
 int main(){
-
     vector<Student> students;
     int choice;
-
     do{
         cout<<"\n----- Student Record System -----\n";
         cout<<"1. Add Student\n";
@@ -23,22 +19,17 @@ int main(){
         cout<<"6. Exit\n";
         cout<<"Enter your choice: ";
         cin>>choice;
-
         if(choice==1){
             Student s;
             cout<<"Roll No: ";
             cin>>s.roll;
-
             cout<<"Name (no spaces pls): ";
             cin>>s.name;  // not handling spaces for now
-
             cout<<"Marks: ";
             cin>>s.marks;
-
             students.push_back(s);
             cout<<"Added!\n";
         }
-
         else if(choice==2){
             if(students.size()==0){
                 cout<<"No data yet.\n";
@@ -50,12 +41,10 @@ int main(){
                 }
             }
         }
-
         else if(choice==3){
             int r;
             cout<<"Enter roll to search: ";
             cin>>r;
-
             bool found=false;
             for(int i=0;i<students.size();i++){
                 if(students[i].roll==r){
@@ -66,12 +55,10 @@ int main(){
             }
             if(!found) cout<<"Not found bro.\n";
         }
-
         else if(choice==4){
             int r;
             cout<<"Roll to update: ";
             cin>>r;
-
             bool found=false;
             for(int i=0;i<students.size();i++){
                 if(students[i].roll==r){
@@ -86,12 +73,10 @@ int main(){
             }
             if(!found) cout<<"No such record.\n";
         }
-
         else if(choice==5){
             int r;
             cout<<"Roll to delete: ";
             cin>>r;
-
             bool found=false;
             for(int i=0;i<students.size();i++){
                 if(students[i].roll==r){
@@ -103,13 +88,10 @@ int main(){
             }
             if(!found) cout<<"No such roll no.\n";
         }
-
         else if(choice!=6){
             cout<<"Invalid choice, try again.\n";
         }
-
     }while(choice!=6);
-
     cout<<"Bye!\n";
     return 0;
 }
