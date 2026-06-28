@@ -1,0 +1,87 @@
+#include<iostream>
+using namespace std;
+int main(){
+    string name[50];
+    string phone[50];
+    string email[50];
+    int count=0;
+    int choice;
+    cout<<"CONTACT MANAGEMENT SYSTEM"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Add Contact"<<endl;
+        cout<<"2. Show All Contacts"<<endl;
+        cout<<"3. Search Contact"<<endl;
+        cout<<"4. Delete Contact"<<endl;
+        cout<<"5. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            cout<<"Enter Name: ";
+            cin>>name[count]; // no spaces for now
+            cout<<"Enter Phone No: ";
+            cin>>phone[count];
+            cout<<"Enter Email: ";
+            cin>>email[count];
+            count=count+1;
+            cout<<"Contact added successfully"<<endl;
+        }
+        if(choice==2){
+            if(count==0){
+                cout<<"No contacts saved yet"<<endl;
+            }
+            else{
+                cout<<"Name  Phone  Email"<<endl;
+                for(int i=0;i<count;i++){
+                    cout<<name[i]<<"  "<<phone[i]<<"  "<<email[i]<<endl;
+                }
+            }
+        }
+        if(choice==3){
+            string sname;
+            cout<<"Enter Name to search: ";
+            cin>>sname;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(name[i]==sname){
+                    cout<<"Phone: "<<phone[i]<<endl;
+                    cout<<"Email: "<<email[i]<<endl;
+                    found=1;
+                }
+            }
+            if(found==0){
+                cout<<"Contact not found"<<endl;
+            }
+        }
+        if(choice==4){
+            string sname;
+            cout<<"Enter Name to delete: ";
+            cin>>sname;
+            int pos=-1;
+            for(int i=0;i<count;i++){
+                if(name[i]==sname){
+                    pos=i;
+                    break;
+                }
+            }
+            if(pos==-1){
+                cout<<"Contact not found"<<endl;
+            }
+            else{
+                // shift everything after pos back by one
+                for(int i=pos;i<count-1;i++){
+                    name[i]=name[i+1];
+                    phone[i]=phone[i+1];
+                    email[i]=email[i+1];
+                }
+                count=count-1;
+                cout<<"Contact deleted successfully"<<endl;
+            }
+        }
+        if(choice==5){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+    }
+    return 0;
+}
