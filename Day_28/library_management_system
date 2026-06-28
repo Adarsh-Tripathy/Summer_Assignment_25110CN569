@@ -1,0 +1,116 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int bookId[50];
+    string title[50];
+    string author[50];
+    int qty[50];
+    int issued[50]; // how many copies currently issued
+    int count=0;
+    int choice;
+    cout<<"LIBRARY MANAGEMENT SYSTEM"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Add Book"<<endl;
+        cout<<"2. Show All Books"<<endl;
+        cout<<"3. Search Book"<<endl;
+        cout<<"4. Issue Book"<<endl;
+        cout<<"5. Return Book"<<endl;
+        cout<<"6. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            cout<<"Enter Book ID: ";
+            cin>>bookId[count];
+            cout<<"Enter Title: ";
+            cin>>title[count]; // no spaces in title for now
+            cout<<"Enter Author: ";
+            cin>>author[count];
+            cout<<"Enter Quantity: ";
+            cin>>qty[count];
+            issued[count]=0; // none issued yet when added
+            count=count+1;
+            cout<<"Book added successfully"<<endl;
+        }
+        if(choice==2){
+            if(count==0){
+                cout<<"No books in library"<<endl;
+            }
+            else{
+                cout<<"ID  Title  Author  Total  Issued  Available"<<endl;
+                for(int i=0;i<count;i++){
+                    int avail = qty[i]-issued[i];
+                    cout<<bookId[i]<<"  "<<title[i]<<"  "<<author[i]<<"  "<<qty[i]<<"  "<<issued[i]<<"  "<<avail<<endl;
+                }
+            }
+        }
+        if(choice==3){
+            int bid;
+            cout<<"Enter Book ID to search: ";
+            cin>>bid;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(bookId[i]==bid){
+                    int avail = qty[i]-issued[i];
+                    cout<<"Title: "<<title[i]<<endl;
+                    cout<<"Author: "<<author[i]<<endl;
+                    cout<<"Total Copies: "<<qty[i]<<endl;
+                    cout<<"Available: "<<avail<<endl;
+                    found=1;
+                }
+            }
+            if(found==0){
+                cout<<"Book not found"<<endl;
+            }
+        }
+        if(choice==4){
+            int bid;
+            cout<<"Enter Book ID to issue: ";
+            cin>>bid;
+
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(bookId[i]==bid){
+                    found=1;
+                    int avail = qty[i]-issued[i];
+                    if(avail>0){
+                        issued[i]=issued[i]+1;
+                        cout<<"Book issued successfully"<<endl;
+                    }
+                    else{
+                        cout<<"No copies available right now"<<endl;
+                    }
+                }
+            }
+            if(found==0){
+                cout<<"Book not found"<<endl;
+            }
+        }
+        if(choice==5){
+            int bid;
+            cout<<"Enter Book ID to return: ";
+            cin>>bid;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(bookId[i]==bid){
+                    found=1;
+                    if(issued[i]>0){
+                        issued[i]=issued[i]-1;
+                        cout<<"Book returned successfully"<<endl;
+                    }
+                    else{
+                        cout<<"No copies were issued for this book"<<endl;
+                    }
+                }
+            }
+            if(found==0){
+                cout<<"Book not found"<<endl;
+            }
+        }
+        if(choice==6){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+    }
+    return 0;
+}
