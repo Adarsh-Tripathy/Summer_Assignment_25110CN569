@@ -1,0 +1,82 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int seatNo[50];
+    string passenger[50];
+    string destination[50];
+    int booked=0; // how many seats booked so far
+    int totalSeats=20; // fixed total seats for the bus/train
+    int choice;
+    cout<<"TICKET BOOKING SYSTEM"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Book Ticket"<<endl;
+        cout<<"2. Show All Bookings"<<endl;
+        cout<<"3. Cancel Ticket"<<endl;
+        cout<<"4. Show Available Seats"<<endl;
+        cout<<"5. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            if(booked>=totalSeats){
+                cout<<"Sorry, all seats are full"<<endl;
+            }
+            else{
+                cout<<"Enter Passenger Name: ";
+                cin>>passenger[booked]; // no spaces for now
+
+                cout<<"Enter Destination: ";
+                cin>>destination[booked];
+
+                seatNo[booked]=booked+1; // simple seat numbering
+
+                booked=booked+1;
+                cout<<"Ticket booked successfully! Seat No: "<<seatNo[booked-1]<<endl;
+            }
+        }
+        if(choice==2){
+            if(booked==0){
+                cout<<"No bookings yet"<<endl;
+            }
+            else{
+                cout<<"Seat  Name  Destination"<<endl;
+                for(int i=0;i<booked;i++){
+                    cout<<seatNo[i]<<"  "<<passenger[i]<<"  "<<destination[i]<<endl;
+                }
+            }
+        }
+        if(choice==3){
+            int sno;
+            cout<<"Enter Seat No to cancel: ";
+            cin>>sno;
+            int pos=-1;
+            for(int i=0;i<booked;i++){
+                if(seatNo[i]==sno){
+                    pos=i;
+                    break;
+                }
+            }
+            if(pos==-1){
+                cout<<"Seat not found"<<endl;
+            }
+            else{
+                // shift everything after pos back by one
+                for(int i=pos;i<booked-1;i++){
+                    seatNo[i]=seatNo[i+1];
+                    passenger[i]=passenger[i+1];
+                    destination[i]=destination[i+1];
+                }
+                booked=booked-1;
+                cout<<"Ticket cancelled successfully"<<endl;
+            }
+        }
+        if(choice==4){
+            cout<<"Available seats: "<<(totalSeats-booked)<<" out of "<<totalSeats<<endl;
+        }
+        if(choice==5){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+    }
+    return 0;
+}
