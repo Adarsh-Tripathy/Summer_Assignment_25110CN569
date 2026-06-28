@@ -1,0 +1,106 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int accNo[50];
+    string name[50];
+    float balance[50];
+    int count=0;
+    int choice;
+    cout<<"BANK ACCOUNT SYSTEM"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Create Account"<<endl;
+        cout<<"2. Show All Accounts"<<endl;
+        cout<<"3. Check Balance"<<endl;
+        cout<<"4. Deposit Money"<<endl;
+        cout<<"5. Withdraw Money"<<endl;
+        cout<<"6. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            cout<<"Enter Account No: ";
+            cin>>accNo[count];
+            cout<<"Enter Name: ";
+            cin>>name[count]; // no spaces in name for now
+            cout<<"Enter Initial Deposit: ";
+            cin>>balance[count];
+            count=count+1;
+            cout<<"Account created successfully"<<endl;
+        }
+        if(choice==2){
+            if(count==0){
+                cout<<"No accounts yet"<<endl;
+            }
+            else{
+                cout<<"AccNo  Name  Balance"<<endl;
+                for(int i=0;i<count;i++){
+                    cout<<accNo[i]<<"  "<<name[i]<<"  "<<balance[i]<<endl;
+                }
+            }
+        }
+        if(choice==3){
+            int acc;
+            cout<<"Enter Account No: ";
+            cin>>acc;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(accNo[i]==acc){
+                    cout<<"Name: "<<name[i]<<endl;
+                    cout<<"Balance: "<<balance[i]<<endl;
+                    found=1;
+                }
+            }
+            if(found==0){
+                cout<<"Account not found"<<endl;
+            }
+        }
+        if(choice==4){
+            int acc;
+            float amt;
+            cout<<"Enter Account No: ";
+            cin>>acc;
+            cout<<"Enter amount to deposit: ";
+            cin>>amt;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(accNo[i]==acc){
+                    balance[i]=balance[i]+amt;
+                    cout<<"Amount deposited. New balance: "<<balance[i]<<endl;
+                    found=1;
+                }
+            }
+            if(found==0){
+                cout<<"Account not found"<<endl;
+            }
+        }
+        if(choice==5){
+            int acc;
+            float amt;
+            cout<<"Enter Account No: ";
+            cin>>acc;
+            cout<<"Enter amount to withdraw: ";
+            cin>>amt;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(accNo[i]==acc){
+                    found=1;
+                    if(amt>balance[i]){
+                        cout<<"Insufficient balance"<<endl;
+                    }
+                    else{
+                        balance[i]=balance[i]-amt;
+                        cout<<"Amount withdrawn. New balance: "<<balance[i]<<endl;
+                    }
+                }
+            }
+            if(found==0){
+                cout<<"Account not found"<<endl;
+            }
+        }
+        if(choice==6){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+    }
+    return 0;
+}
