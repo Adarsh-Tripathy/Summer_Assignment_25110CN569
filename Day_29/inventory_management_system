@@ -1,0 +1,117 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int itemId[50];
+    string itemName[50];
+    int qty[50];
+    float price[50];
+    int count=0;
+    int choice;
+    cout<<"INVENTORY MANAGEMENT SYSTEM"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Add Item"<<endl;
+        cout<<"2. Show All Items"<<endl;
+        cout<<"3. Search Item"<<endl;
+        cout<<"4. Update Stock"<<endl;
+        cout<<"5. Delete Item"<<endl;
+        cout<<"6. Show Total Inventory Value"<<endl;
+        cout<<"7. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            cout<<"Enter Item ID: ";
+            cin>>itemId[count];
+            cout<<"Enter Item Name: ";
+            cin>>itemName[count]; // no spaces for now
+            cout<<"Enter Quantity: ";
+            cin>>qty[count];
+            cout<<"Enter Price per unit: ";
+            cin>>price[count];
+            count=count+1;
+            cout<<"Item added successfully"<<endl;
+        }
+        if(choice==2){
+            if(count==0){
+                cout<<"No items in inventory"<<endl;
+            }
+            else{
+                cout<<"ID  Name  Qty  Price"<<endl;
+                for(int i=0;i<count;i++){
+                    cout<<itemId[i]<<"  "<<itemName[i]<<"  "<<qty[i]<<"  "<<price[i]<<endl;
+                }
+            }
+        }
+        if(choice==3){
+            int iid;
+            cout<<"Enter Item ID to search: ";
+            cin>>iid;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(itemId[i]==iid){
+                    cout<<"Name: "<<itemName[i]<<endl;
+                    cout<<"Quantity: "<<qty[i]<<endl;
+                    cout<<"Price: "<<price[i]<<endl;
+                    found=1;
+                }
+            }
+            if(found==0){
+                cout<<"Item not found"<<endl;
+            }
+        }
+        if(choice==4){
+            int iid;
+            cout<<"Enter Item ID to update stock: ";
+            cin>>iid;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(itemId[i]==iid){
+                    cout<<"Enter new quantity: ";
+                    cin>>qty[i];
+                    cout<<"Stock updated"<<endl;
+                    found=1;
+                }
+            }
+            if(found==0){
+                cout<<"Item not found"<<endl;
+            }
+        }
+        if(choice==5){
+            int iid;
+            cout<<"Enter Item ID to delete: ";
+            cin>>iid;
+            int pos=-1;
+            for(int i=0;i<count;i++){
+                if(itemId[i]==iid){
+                    pos=i;
+                    break;
+                }
+            }
+            if(pos==-1){
+                cout<<"Item not found"<<endl;
+            }
+            else{
+                for(int i=pos;i<count-1;i++){
+                    itemId[i]=itemId[i+1];
+                    itemName[i]=itemName[i+1];
+                    qty[i]=qty[i+1];
+                    price[i]=price[i+1];
+                }
+                count=count-1;
+                cout<<"Item deleted successfully"<<endl;
+            }
+        }
+        if(choice==6){
+            float totalValue=0;
+            for(int i=0;i<count;i++){
+                totalValue=totalValue+(qty[i]*price[i]);
+            }
+            cout<<"Total Inventory Value: "<<totalValue<<endl;
+        }
+        if(choice==7){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+    }
+    return 0;
+}
