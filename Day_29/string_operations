@@ -1,0 +1,73 @@
+#include<iostream>
+#include<algorithm> // for reverse
+using namespace std;
+int main(){
+    string str;
+    int choice;
+    cout<<"MENU DRIVEN STRING OPERATIONS"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Find Length"<<endl;
+        cout<<"2. Reverse String"<<endl;
+        cout<<"3. Convert to Uppercase"<<endl;
+        cout<<"4. Convert to Lowercase"<<endl;
+        cout<<"5. Count Vowels"<<endl;
+        cout<<"6. Check Palindrome"<<endl;
+        cout<<"7. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==7){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+        if(choice<1 || choice>7){
+            cout<<"Invalid choice"<<endl;
+            continue;
+        }
+        cout<<"Enter a string (no spaces): ";
+        cin>>str;
+        if(choice==1){
+            cout<<"Length: "<<str.length()<<endl;
+        }
+        if(choice==2){
+            string rev=str;
+            reverse(rev.begin(), rev.end());
+            cout<<"Reversed: "<<rev<<endl;
+        }
+        if(choice==3){
+            string upper=str;
+            for(int i=0;i<upper.length();i++){
+                upper[i]=toupper(upper[i]);
+            }
+            cout<<"Uppercase: "<<upper<<endl;
+        }
+        if(choice==4){
+            string lower=str;
+            for(int i=0;i<lower.length();i++){
+                lower[i]=tolower(lower[i]);
+            }
+            cout<<"Lowercase: "<<lower<<endl;
+        }
+        if(choice==5){
+            int vowels=0;
+            for(int i=0;i<str.length();i++){
+                char c=tolower(str[i]);
+                if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
+                    vowels=vowels+1;
+                }
+            }
+            cout<<"Number of vowels: "<<vowels<<endl;
+        }
+        if(choice==6){
+            string rev=str;
+            reverse(rev.begin(), rev.end());
+            if(rev==str){
+                cout<<"It is a Palindrome"<<endl;
+            }
+            else{
+                cout<<"It is not a Palindrome"<<endl;
+            }
+        }
+    }
+    return 0;
+}
