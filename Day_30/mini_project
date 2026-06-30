@@ -1,0 +1,115 @@
+#include<iostream>
+using namespace std;
+// simple student-marks mini project using functions
+int roll[30];
+string name[30];
+float marks[30];
+int count=0; // global, used by all functions
+void addStudent(){
+    cout<<"Enter Roll No: ";
+    cin>>roll[count];
+    cout<<"Enter Name: ";
+    cin>>name[count]; // no spaces for no
+    cout<<"Enter Marks: ";
+    cin>>marks[count];
+    count=count+1;
+    cout<<"Student added"<<endl;
+}
+void displayStudents(){
+    if(count==0){
+        cout<<"No records found"<<endl;
+        return;
+    }
+    cout<<"Roll  Name  Marks"<<endl;
+    for(int i=0;i<count;i++){
+        cout<<roll[i]<<"  "<<name[i]<<"  "<<marks[i]<<endl;
+    }
+}
+void searchStudent(){
+    int sroll;
+    cout<<"Enter Roll No to search: ";
+    cin>>sroll;
+    int found=0;
+    for(int i=0;i<count;i++){
+        if(roll[i]==sroll){
+            cout<<"Name: "<<name[i]<<endl;
+            cout<<"Marks: "<<marks[i]<<endl;
+            found=1;
+        }
+    }
+    if(found==0){
+        cout<<"Student not found"<<endl;
+    }
+}
+float averageMarks(){
+    if(count==0){
+        return 0;
+    }
+    float total=0;
+    for(int i=0;i<count;i++){
+        total=total+marks[i];
+    }
+    return total/count;
+}
+string toUpperName(string s){
+    for(int i=0;i<s.length();i++){
+        s[i]=toupper(s[i]);
+    }
+    return s;
+}
+void showToppers(){
+    if(count==0){
+        cout<<"No records found"<<endl;
+        return;
+    }
+    float maxMarks=marks[0];
+    for(int i=1;i<count;i++){
+        if(marks[i]>maxMarks){
+            maxMarks=marks[i];
+        }
+    }
+    cout<<"Topper(s):"<<endl;
+    for(int i=0;i<count;i++){
+        if(marks[i]==maxMarks){
+            cout<<toUpperName(name[i])<<" - "<<marks[i]<<endl;
+        }
+    }
+}
+int main(){
+    int choice;
+    cout<<"MINI PROJECT - STUDENT MARKS (Arrays + Strings + Functions)"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Add Student"<<endl;
+        cout<<"2. Display All"<<endl;
+        cout<<"3. Search Student"<<endl;
+        cout<<"4. Show Average Marks"<<endl;
+        cout<<"5. Show Topper(s)"<<endl;
+        cout<<"6. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            addStudent();
+        }
+        else if(choice==2){
+            displayStudents();
+        }
+        else if(choice==3){
+            searchStudent();
+        }
+        else if(choice==4){
+            cout<<"Average Marks: "<<averageMarks()<<endl;
+        }
+        else if(choice==5){
+            showToppers();
+        }
+        else if(choice==6){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+        else{
+            cout<<"Invalid choice"<<endl;
+        }
+    }
+    return 0;
+}
