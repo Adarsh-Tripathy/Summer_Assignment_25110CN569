@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int empId[30];
+    string empName[30];
+    float salary[30];
+    int count=0;
+    int choice;
+    cout<<"MINI EMPLOYEE MANAGEMENT SYSTEM"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Add Employee"<<endl;
+        cout<<"2. Show All Employees"<<endl;
+        cout<<"3. Search Employee"<<endl;
+        cout<<"4. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            cout<<"Enter Employee ID: ";
+            cin>>empId[count];
+            cout<<"Enter Name: ";
+            cin>>empName[count]; // no spaces for now
+            cout<<"Enter Salary: ";
+            cin>>salary[count];
+            count=count+1;
+            cout<<"Employee added"<<endl;
+        }
+        if(choice==2){
+            if(count==0){
+                cout<<"No employees added yet"<<endl;
+            }
+            else{
+                cout<<"ID  Name  Salary"<<endl;
+                for(int i=0;i<count;i++){
+                    cout<<empId[i]<<"  "<<empName[i]<<"  "<<salary[i]<<endl;
+                }
+            }
+        }
+        if(choice==3){
+            int eid;
+            cout<<"Enter Employee ID to search: ";
+            cin>>eid;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(empId[i]==eid){
+                    cout<<"Name: "<<empName[i]<<endl;
+                    cout<<"Salary: "<<salary[i]<<endl;
+                    found=1;
+                }
+            }
+            if(found==0){
+                cout<<"Employee not found"<<endl;
+            }
+        }
+        if(choice==4){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+    }
+    return 0;
+}
