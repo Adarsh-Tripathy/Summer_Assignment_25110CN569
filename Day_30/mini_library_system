@@ -1,0 +1,93 @@
+#include<iostream>
+using namespace std;
+int main(){
+    string bookName[30];
+    string author[30];
+    int available[30]; // 1 = available, 0 = issued
+    int count=0;
+    int choice;
+    cout<<"MINI LIBRARY SYSTEM"<<endl;
+    while(true){
+        cout<<endl;
+        cout<<"1. Add Book"<<endl;
+        cout<<"2. Show All Books"<<endl;
+        cout<<"3. Issue Book"<<endl;
+        cout<<"4. Return Book"<<endl;
+        cout<<"5. Exit"<<endl;
+        cout<<"Enter choice: ";
+        cin>>choice;
+        if(choice==1){
+            cout<<"Enter Book Name: ";
+            cin>>bookName[count]; // no spaces for now
+            cout<<"Enter Author: ";
+            cin>>author[count];
+            available[count]=1; // available by default
+            count=count+1;
+            cout<<"Book added"<<endl;
+        }
+        if(choice==2){
+            if(count==0){
+                cout<<"No books added yet"<<endl;
+            }
+            else{
+                cout<<"Book  Author  Status"<<endl;
+                for(int i=0;i<count;i++){
+                    cout<<bookName[i]<<"  "<<author[i]<<"  ";
+                    if(available[i]==1){
+                        cout<<"Available"<<endl;
+                    }
+                    else{
+                        cout<<"Issued"<<endl;
+                    }
+                }
+            }
+        }
+        if(choice==3){
+            string bname;
+            cout<<"Enter Book Name to issue: ";
+            cin>>bname;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(bookName[i]==bname){
+                    found=1;
+                    if(available[i]==1){
+                        available[i]=0;
+                        cout<<"Book issued"<<endl;
+                    }
+                    else{
+                        cout<<"Book already issued"<<endl;
+                    }
+                }
+            }
+            if(found==0){
+                cout<<"Book not found"<<endl;
+            }
+        }
+        if(choice==4){
+            string bname;
+            cout<<"Enter Book Name to return: ";
+            cin>>bname;
+            int found=0;
+            for(int i=0;i<count;i++){
+                if(bookName[i]==bname){
+                    found=1;
+                    if(available[i]==0){
+                        available[i]=1;
+                        cout<<"Book returned"<<endl;
+                    }
+                    else{
+                        cout<<"This book was not issued"<<endl;
+                    }
+                }
+            }
+            if(found==0){
+                cout<<"Book not found"<<endl;
+            }
+        }
+        if(choice==5){
+            cout<<"Exiting..."<<endl;
+            break;
+        }
+    }
+    return 0;
+}
